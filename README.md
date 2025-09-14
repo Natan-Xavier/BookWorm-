@@ -49,6 +49,6 @@ O sistema foi desenhado com três níveis de acesso, cada um com suas respectiva
 | Membro | GitHub |
 | --- | --- |
 | Natan Xavier | @Natan-Xavier |
-| [Nome Colega 1] | [@github-colega1] |
+| Pier Giorgio | [@Pier-Cesar |
 | [Nome Colega 2] | [@github-colega2] |
 | [Nome Colega 3] | [@github-colega3] |

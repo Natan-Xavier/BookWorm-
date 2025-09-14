@@ -50,5 +50,5 @@ O sistema foi desenhado com três níveis de acesso, cada um com suas respectiva
 | --- | --- |
 | Natan Xavier | @Natan-Xavier |
 | Pier Giorgio | @Pier-Cesar |
-| Guilherme Gomes | @Gomes-007] |
+| Guilherme Gomes | @Gomes-007 |
 | [Nome Colega 3] | [@github-colega3] |

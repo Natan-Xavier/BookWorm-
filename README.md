@@ -38,9 +38,9 @@ O sistema foi desenhado com três níveis de acesso, cada um com suas respectiva
 ## 🛠️ Tecnologias e Ferramentas
 
 | Ferramenta | Descrição |
-| --- | --- |
-| **Java []** | Linguagem principal para o desenvolvimento do backend. |
-| **Git & GitHub**| Sistema de controle de versão. |
+| Eclipse | IDLE usada
+| Java    | Linguagem principal para o desenvolvimento do backend. |
+| JDK21   | Sistema de controle de versão. |
 
 ---
 

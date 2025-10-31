@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca Virtual</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f2f2f2; margin: 0; }
+    header { background-color: #4CAF50; color: white; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; }
+    .book-container { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; gap: 20px; }
+    .book-card { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 200px; text-align: center; }
+    .book-card button { background-color: #4CAF50; color: white; border: none; border-radius: 5px; padding: 10px; cursor: pointer; }
+    .book-card button:hover { background-color: #45a049; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>bookworm club</h1>
+    <button onclick="logout()">Sair</button>
+  </header>
+
+  <div class="book-container" id="bookContainer"></div>
+
+  <script>
+
+    const books = [
+      { title: "Dom Casmurro", author: "Machado de Assis" },
+      { title: "O Alquimista", author: "Paulo Coelho" },
+      { title: "1984", author: "George Orwell" },
+      { title: "O Pequeno Príncipe", author: "Antoine de Saint-Exupéry" },
+      { title: "Harry Potter", author: "J.K. Rowling" }
+    ];
+
+    const container = document.getElementById('bookContainer');
+    books.forEach(book => {
+      const card = document.createElement('div');
+      card.className = 'book-card';
+      card.innerHTML = `
+        <h3>${book.title}</h3>
+        <p>${book.author}</p>
+        <button onclick="alugarLivro('${book.title}')">Alugar</button>
+      `;
+      container.appendChild(card);
+    });
+
+    function alugarLivro(titulo) {
+      alert(`Você alugou o livro: ${titulo}`);
+    }
+
+    function logout() {
+      alert("Você saiu da conta (simulação).");
+      localStorage.removeItem('clienteLogado');
+    }
+  </script>
+</body>
+</html>

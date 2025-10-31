@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área do Funcionário</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background-color: #f2f2f2; }
+    header {
+      background-color: #ff6600; color: white;
+      display: flex; justify-content: space-between;
+      align-items: center; padding: 15px 30px;
+    }
+    main { padding: 20px; }
+    .livros { margin-top: 20px; }
+    button {
+      background-color: #ff6600; border: none; color: white;
+      padding: 8px 15px; border-radius: 5px; cursor: pointer;
+    }
+    button:hover { background-color: #e65c00; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Área do Funcionário</h1>
+    <button onclick="logout()">Sair</button>
+  </header>
+
+  <main>
+    <h2>Gerenciar Livros</h2>
+    <div class="livros" id="livrosContainer"></div>
+  </main>
+
+  <script>
+    // 🔹 Removida a proteção de acesso e redirecionamento
+    // if (localStorage.getItem('funcionarioLogado') !== 'true') {
+    //   alert('Você precisa fazer login primeiro.');
+    //   window.location.href = "login_funcionario.html";
+    // }
+
+    const livros = JSON.parse(localStorage.getItem('livros')) || [
+      { titulo: "Dom Casmurro", autor: "Machado de Assis" },
+      { titulo: "O Alquimista", autor: "Paulo Coelho" }
+    ];
+
+    const container = document.getElementById('livrosContainer');
+    function renderLivros() {
+      container.innerHTML = "";
+      livros.forEach((livro, i) => {
+        const div = document.createElement('div');
+        div.innerHTML = `
+          <p><strong>${livro.titulo}</strong> — ${livro.autor}</p>
+          <button onclick="removerLivro(${i})">Remover</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function removerLivro(i) {
+      livros.splice(i, 1);
+      localStorage.setItem('livros', JSON.stringify(livros));
+      renderLivros();
+      alert("Livro removido (simulação).");
+    }
+
+    function logout() {
+      // 🔹 Apenas simula o logout, sem redirecionar
+      localStorage.removeItem('funcionarioLogado');
+      alert("Você saiu da conta (simulação).");
+    }
+
+    renderLivros();
+  </script>
+</body>
+</html>

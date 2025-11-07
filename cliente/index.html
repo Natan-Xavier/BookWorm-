@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookworm Club - Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>📚 Bookworm Club</h1>
+    <nav>
+      <a href="#favoritos">Favoritos das Minhocas</a>
+      <a href="#recomendacao">Recomendação da Semana</a>
+      <a href="#destaques">Destaques do Mês</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="favoritos">
+      <h2>Favoritos das Minhocas</h2>
+      <div class="livros">
+        <div class="livro" onclick="verLivro('O Sol é para Todos')">
+          <img src="https://m.media-amazon.com/images/I/81gepf1eMqL._SY466_.jpg" alt="Livro" />
+          <p>O Sol é para Todos</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="recomendacao">
+      <h2>Recomendação da Semana</h2>
+      <div class="livros">
+        <div class="livro" onclick="verLivro('1984')">
+          <img src="https://m.media-amazon.com/images/I/71kxa1-0mfL._SY466_.jpg" alt="Livro" />
+          <p>1984</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="destaques">
+      <h2>Destaques do Mês</h2>
+      <div class="livros">
+        <div class="livro" onclick="verLivro('O Pequeno Príncipe')">
+          <img src="https://m.media-amazon.com/images/I/81zLwAwD6-L._SY466_.jpg" alt="Livro" />
+          <p>O Pequeno Príncipe</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Bookworm Club © 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

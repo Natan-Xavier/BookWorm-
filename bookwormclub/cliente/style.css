@@ -1,0 +1,152 @@
+/* === RESET E BASE === */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f3f8f3;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* === CONTAINERS === */
+.container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* === TIPOGRAFIA === */
+h1, h2 {
+  color: #1b5e20;
+  margin: 10px 0;
+}
+
+/* === FORMULÁRIOS === */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input, select, button {
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+button {
+  background-color: #2e7d32;
+  color: white;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #1b5e20;
+}
+
+/* === HEADER E NAVEGAÇÃO === */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2e7d32;
+  color: white;
+  padding: 15px 20px;
+}
+
+header h1 {
+  font-size: 1.6em;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+nav a:hover {
+  opacity: 0.8;
+}
+
+/* === BARRA DE BUSCA (HEADER) === */
+.busca-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.busca-header input {
+  padding: 8px 32px 8px 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  width: 200px;
+  transition: box-shadow 0.3s, width 0.3s;
+}
+
+.busca-header input:focus {
+  box-shadow: 0 0 0 2px #a5d6a7;
+  width: 230px;
+}
+
+/* Ícone de lupa */
+.busca-header::after {
+  content: "🔍";
+  position: absolute;
+  right: 8px;
+  font-size: 1.1em;
+  pointer-events: none;
+}
+
+/* === SEÇÕES DE LIVROS === */
+.livros {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+}
+
+.livro {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.livro:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.livro img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* === FOOTER === */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #1b5e20;
+  color: white;
+  font-size: 0.9em;
+}

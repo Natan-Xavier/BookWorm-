@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil - Bookworm Club</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>👤 Meu Perfil</h1>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <a href="perfil.html">👤 Perfil</a>
+      <button id="btnLogout" class="logout">Sair</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="info-usuario">
+      <h2>📧 Informações do Usuário</h2>
+      <p><strong>Email:</strong> <span id="emailUsuario"></span></p>
+    </section>
+
+    <section class="favoritos">
+      <h2>💖 Meus Favoritos</h2>
+      <div id="listaFavoritosPerfil" class="livros"></div>
+    </section>
+
+    <section class="alugados">
+      <h2>📚 Meus Livros Alugados</h2>
+      <div id="listaAlugados" class="livros"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Bookworm Club © 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

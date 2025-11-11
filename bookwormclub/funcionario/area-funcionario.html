@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Área do Funcionário - Bookworm Club</title>
+  <link rel="stylesheet" href="funcionario.css" />
+</head>
+<body>
+  <header>
+    <h1>📚 Área do Funcionário</h1>
+    <button id="logoutBtn">Sair</button>
+  </header>
+
+  <div class="container">
+    <h2>Cadastrar Novo Livro</h2>
+    <form id="formLivro">
+      <input type="text" id="titulo" placeholder="Título do livro" required />
+      <input type="text" id="capa" placeholder="URL da capa do livro" required />
+      <button type="submit">Adicionar Livro</button>
+    </form>
+
+    <h3>Livros Cadastrados</h3>
+    <div id="listaLivros"></div>
+  </div>
+
+  <script src="funcionario.js"></script>
+</body>
+</html>

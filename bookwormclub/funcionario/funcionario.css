@@ -1,0 +1,115 @@
+/* Configuração Básica e Correção de Layout */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    min-height: 100vh;
+    margin: 0;
+    /* CORREÇÃO PRINCIPAL: Empilha verticalmente os elementos (header e container) */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header - Fixo no topo e 100% de largura */
+header {
+    background-color: #ff6600;
+    color: white;
+    width: 100%;
+    padding: 15px 30px; /* Adiciona padding nas laterais para o h1 e botão */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Adiciona uma sombra para separá-lo visualmente do corpo */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+    position: sticky; /* Opcional: mantém o header visível ao rolar */
+    top: 0;
+    z-index: 100;
+}
+
+/* Título na Header - Garante que ele fique alinhado */
+header h1 {
+    margin: 0; /* Remove margem padrão que pode atrapalhar o alinhamento */
+    font-size: 1.6em;
+}
+
+/* Botão Sair na Header */
+header button {
+    background-color: white;
+    color: #ff6600;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+/* Container Principal - Centralizado Horizontalmente */
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15); /* Sombra um pouco mais forte */
+    width: 90%; /* Usa 90% da largura em telas pequenas */
+    max-width: 450px; /* Aumenta a max-width para um visual mais moderno */
+    /* CORREÇÃO SECUNDÁRIA: Centraliza o container e adiciona margens superior/inferior */
+    margin: 30px auto; 
+    /* flex-grow: 1; -> Opcional: Faz o container ocupar o espaço vertical restante */
+}
+
+/* Título H2 */
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #ff6600;
+}
+
+/* Inputs */
+input {
+    width: calc(100% - 20px); /* Ajuste para contabilizar o padding (box-sizing não está definido) */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Adicione isso para inputs mais previsíveis */
+}
+
+/* Botão de Formulário */
+button[type="submit"] { /* Especifica o botão do form para não conflitar com o header */
+    width: 100%;
+    padding: 12px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+button[type="submit"]:hover {
+    background-color: #e65c00;
+}
+
+/* Classes sem uso no seu HTML, mas mantidas por segurança */
+.link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+#listaLivros {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.livro-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.livro-item:last-child {
+    border-bottom: none;
+}

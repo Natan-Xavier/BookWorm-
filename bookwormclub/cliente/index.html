@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookworm Club - Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>📚 Bookworm Club</h1>
+    
+    <nav>
+      <a href="#favoritos">Favoritos das Minhocas</a>
+      <a href="#recomendacao">Recomendação da Semana</a>
+      <a href="#destaques">Destaques do Mês</a>
+      <a href="perfil.html">👤 Meu Perfil</a>
+    </nav>
+
+    <!-- 🔍 Barra de busca no header -->
+    <div class="busca-header">
+      <input 
+        type="text" 
+        id="campoBusca" 
+        placeholder="Buscar livro..." 
+        oninput="filtrarLivros()" 
+      />
+    </div>
+  </header>
+
+  <main>
+    <section id="favoritos">
+      <h2> ❤️ Seus Favoritos </h2>
+      <div class="livros" id="listaFavoritos"></div>
+    </section>
+
+    <section id="recomendacao">
+      <h2> 🌟 Recomendação da Semana </h2>
+      <div class="livros" id="listaLivros"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Bookworm Club © 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -62,7 +62,7 @@ public class LoginUI extends JFrame {
             return;
         }
 
-        Cliente cliente = new Cliente(email, senha);
+        biblioteca.Classes.Cliente cliente = new Cliente(email, senha);
         if (cliente.login()) {
             JOptionPane.showMessageDialog(this, "Bem-vindo(a)!");
             new BibliotecaUI(cliente).setVisible(true);

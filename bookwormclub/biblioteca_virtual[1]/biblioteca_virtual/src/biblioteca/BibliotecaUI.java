@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 public class BibliotecaUI extends JFrame {
 
-    private final Cliente cliente;
+    private final biblioteca.Classes.Cliente cliente;
     private final JTable tabelaLivros = new JTable();
-    private final ArrayList<Livro> livros = new ArrayList<>();
+    private final ArrayList<biblioteca.Classes.Livro> livros = new ArrayList<>();
 
     public BibliotecaUI(Cliente cliente) {
         this.cliente = cliente;
@@ -46,9 +46,9 @@ public class BibliotecaUI extends JFrame {
     private void carregarLivros() {
         // Simulação de livros
         livros.clear();
-        livros.add(new Livro(1, "Java Básico", "Autor A", true));
-        livros.add(new Livro(2, "POO em Java", "Autor B", true));
-        livros.add(new Livro(3, "Banco de Dados", "Autor C", true));
+        livros.add(new biblioteca.Classes.Livro(1, "Java Básico", "Autor A", true));
+        livros.add(new biblioteca.Classes.Livro(2, "POO em Java", "Autor B", true));
+        livros.add(new biblioteca.Classes.Livro(3, "Banco de Dados", "Autor C", true));
 
         atualizarTabela();
     }
@@ -56,7 +56,7 @@ public class BibliotecaUI extends JFrame {
     private void atualizarTabela() {
         DefaultTableModel model = (DefaultTableModel) tabelaLivros.getModel();
         model.setRowCount(0);
-        for (Livro livro : livros) {
+        for (biblioteca.Classes.Livro livro : livros) {
             model.addRow(new Object[]{livro.getId(), livro.getTitulo(), livro.getAutor(), livro.isDisponivel() ? "Sim" : "Não"});
         }
     }
@@ -67,7 +67,7 @@ public class BibliotecaUI extends JFrame {
             JOptionPane.showMessageDialog(this, "Selecione um livro para emprestar.");
             return;
         }
-        Livro livro = livros.get(linha);
+        biblioteca.Classes.Livro livro = livros.get(linha);
         if (!livro.isDisponivel()) {
             JOptionPane.showMessageDialog(this, "Livro indisponível.");
             return;

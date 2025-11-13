@@ -15,7 +15,7 @@ public class CadastroUsuarioUI extends JFrame {
     private static final String USER = "sa";
     private static final String PASSWORD = "32452";
 
-    private final LoginUI parent;
+    private final biblioteca.UI.LoginUI parent;
     private final JTextField nomeField = new JTextField();
     private final JTextField emailField = new JTextField();
     private final JPasswordField senhaField = new JPasswordField();

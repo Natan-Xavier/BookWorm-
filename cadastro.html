@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOKWORM CLUB | Cadastro</title>
+    <style>
+        :root {
+            --input-background: #ffbd59;
+            --text-blue-light: #38b6ff;
+            --text-blue-dark: #5170ff;
+            --white-color: #fff;
+            --dark-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--white-color);
+            color: var(--dark-color);
+            min-height: 100vh;
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .cadastro-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px; 
+            width: 100%;
+            gap: 80px;
+            padding: 40px 0;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .logo-section img {
+            width: 350px; 
+            height: 350px;
+            background-color: transparent; 
+            object-fit: contain; 
+            /* Placeholder simples */
+            border-radius: 50%;
+            background-color: var(--input-background);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            color: var(--text-blue-dark);
+            margin-top: -50px; 
+        }
+
+        .cadastro-form-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .form-title {
+            color: var(--text-blue-light);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .form-field {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .form-field label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+
+        .form-field input,
+        .form-field select {
+            width: 100%;
+            padding: 15px 20px;
+            background-color: var(--input-background);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            outline: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            appearance: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        .form-field select option[disabled]:first-child {
+            color: var(--dark-color);
+        }
+
+        .login-link {
+            font-size: 1.2rem;
+            margin-top: 15px;
+            white-space: nowrap;
+        }
+
+        .login-link span {
+            color: var(--text-blue-light);
+        }
+
+        .login-link a {
+            color: var(--text-blue-dark);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .login-link a:hover {
+            color: var(--text-blue-light);
+        }
+
+        .btn-submit {
+            background-color: var(--text-blue-light);
+            color: var(--white-color);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 25px; 
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--text-blue-dark);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cadastro-container">
+        
+        <div class="cadastro-form-wrapper">
+            <h1 class="form-title">Primeira vez aqui? Cadastre-se!</h1>
+            
+            <form action="#" method="post">
+                
+                <div class="form-field">
+                    <label for="nome">nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                
+                <div class="form-field">
+                    <label for="data_nascimento">data de nascimento:</label>
+                    <input type="date" id="data_nascimento" name="data_nascimento" required>
+                </div>
+                
+                <div class="form-field">
+                    <label for="genero">gênero:</label>
+                    <select id="genero" name="genero" required>
+                        <option value="" disabled selected>Selecione seu gênero</option>
+                        <option value="f">Feminino</option>
+                        <option value="m">Masculino</option>
+                        <option value="o">Outro</option>
+                        <option value="nao_informar">Prefiro não informar</option>
+                    </select>
+                </div>
+
+                <div class="form-field">
+                    <label for="email">email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="confirmar_email">confirmar email:</label>
+                    <input type="email" id="confirmar_email" name="confirmar_email" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="senha">senha:</label>
+                    <input type="password" id="senha" name="senha" required>
+                </div>
+                
+                <div class="form-field">
+                    <label for="confirmar_senha">confirmar senha:</label>
+                    <input type="password" id="confirmar_senha" name="confirmar_senha" required>
+                </div>
+                
+                <button type="submit" class="btn-submit">CADASTRAR</button>
+
+            </form>
+            
+            <div class="login-link">
+                <span>já tem uma conta?</span> 
+                <a href="login.html">faça login aqui!</a>
+            </div>
+        </div>
+        
+        <div class="logo-section">
+            <div class="logo-text">COMECE SUA AVENTURA LITERÁRIA</div>
+            <img src="https://placehold.co/350x350/ffbd59/ffbd59" alt="Bookworm Club Logo">
+        </div>
+    </div>
+
+</body>
+</html>

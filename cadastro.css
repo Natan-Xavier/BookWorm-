@@ -1,0 +1,134 @@
+:root {
+    --input-background: #ffbd59;
+    --text-blue-light: #38b6ff;
+    --text-blue-dark: #5170ff;
+    --white-color: #fff;
+    --dark-color: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--white-color);
+    color: var(--dark-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.cadastro-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+    gap: 80px;
+    padding: 40px 0;
+}
+
+.logo-section {
+    text-align: center;
+}
+
+.logo-section img {
+    width: 350px;
+    height: 350px;
+    object-fit: contain;
+    background: transparent;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    color: var(--text-blue-dark);
+    margin-top: -50px;
+}
+
+.cadastro-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 450px;
+    width: 100%;
+}
+
+.form-title {
+    color: var(--text-blue-light);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.form-field {
+    margin-bottom: 20px;
+}
+
+.form-field label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-field input,
+.form-field select {
+    width: 100%;
+    padding: 15px 20px;
+    background: var(--input-background);
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    color: var(--dark-color);
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    appearance: none;
+    cursor: pointer;
+}
+
+.form-field select option[disabled]:first-child {
+    color: var(--dark-color);
+}
+
+/* Links */
+.login-link {
+    font-size: 1.2rem;
+    margin-top: 15px;
+    white-space: nowrap;
+}
+
+.login-link span {
+    color: var(--text-blue-light);
+}
+
+.login-link a {
+    color: var(--text-blue-dark);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.login-link a:hover {
+    color: var(--text-blue-light);
+}
+
+.btn-submit {
+    background: var(--text-blue-light);
+    color: var(--white-color);
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 25px;
+    width: 100%;
+}
+
+.btn-submit:hover {
+    background: var(--text-blue-dark);
+}

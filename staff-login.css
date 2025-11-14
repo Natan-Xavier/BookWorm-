@@ -1,0 +1,124 @@
+:root {
+    --input-background: #ffbd59;
+    --text-blue-light: #38b6ff;
+    --text-blue-dark: #5170ff;
+    --white-color: #fff;
+    --dark-color: #333;
+    --red-header: #ff5e5e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--white-color);
+    color: var(--dark-color);
+    min-height: 100vh;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 500px;
+    width: 100%;
+    padding: 40px;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+}
+
+.staff-header {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--red-header);
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--red-header);
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+
+.login-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.form-title {
+    color: var(--text-blue-light);
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.staff-form {
+    width: 100%;
+}
+
+.form-field {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.form-field label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: var(--dark-color);
+}
+
+
+.form-field input {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: var(--input-background);
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    color: var(--dark-color);
+    outline: none; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-submit {
+    background-color: var(--text-blue-light);
+    color: var(--white-color);
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.btn-submit:hover {
+    background-color: var(--text-blue-dark);
+}
+
+.client-link {
+    font-size: 1rem;
+    margin-top: 30px;
+    color: var(--text-blue-dark);
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.client-link:hover {
+    opacity: 0.8;
+}

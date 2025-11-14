@@ -1,0 +1,250 @@
+
+:root {
+    --input-background: #ffbd59;
+    --text-blue-light: #38b6ff;
+    --text-blue-dark: #5170ff;
+    --white-color: #fff;
+    --dark-color: #333;
+    --red-header: #ff5e5e;
+    --blue-footer: #38b6ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--white-color);
+    color: var(--dark-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; 
+}
+
+.header {
+    background-color: var(--red-header);
+    color: var(--white-color);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.header-nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--white-color);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 0;
+    transition: opacity 0.3s;
+}
+
+.nav-link:hover {
+    opacity: 0.8;
+}
+
+.btn-entrar {
+    background-color: var(--text-blue-light);
+    color: var(--white-color);
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-entrar:hover {
+    background-color: var(--text-blue-dark);
+}
+
+.book-detail-main {
+    flex-grow: 1;
+    padding: 40px 5%;
+    max-width: 1400px; 
+    width: 100%;
+    margin: 0 auto;
+}
+
+.book-title {
+    color: var(--text-blue-dark);
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.book-content-container {
+    display: flex;
+    gap: 50px;
+}
+
+.book-cover-section {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+}
+
+.book-cover {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+}
+
+.book-actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+}
+
+.btn-action {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+}
+
+.btn-reservar {
+    background-color: var(--text-blue-light);
+    color: var(--white-color);
+}
+
+.btn-reservar:hover {
+    background-color:#2b9ddf;
+}
+
+.btn-ler {
+    background-color: var(--text-blue-light); 
+    color: var(--white-color);
+}
+
+.btn-ler:hover {
+    background-color: #2b9ddf;
+}
+
+.book-info-section {
+    flex-grow: 1;
+    padding-top: 20px;
+}
+
+.info-block {
+    margin-bottom: 40px;
+}
+
+.info-block h2 {
+    color: var(--dark-color);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.sinopse-text {
+    line-height: 1.8;
+    color: var(--dark-color);
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+.info-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 40px;
+}
+
+.detail-item strong {
+    color: var(--text-blue-dark);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 3px;
+    font-size: 1rem;
+}
+
+.detail-item span {
+    font-size: 1.1rem;
+    color: var(--dark-color);
+}
+
+.footer {
+    background-color: var(--blue-footer);
+    color: var(--white-color);
+    padding: 40px 5%;
+    margin-top: auto; 
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo {
+    font-size: 2.5rem;
+}
+
+.logo-icon {
+    font-family: cursive; 
+    font-weight: bold;
+}
+
+.footer-links {
+    display: flex;
+    gap: 50px;
+}
+
+.footer-links .column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-links a {
+    color: var(--white-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: opacity 0.3s;
+}
+
+.footer-links a:hover {
+    opacity: 0.8;
+}
+
+.footer-social a {
+    color: var(--white-color);
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-left: 15px;
+    font-family: 'Arial Black', sans-serif; 
+}
+
+

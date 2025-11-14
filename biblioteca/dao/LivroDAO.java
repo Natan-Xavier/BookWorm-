@@ -23,26 +23,26 @@ public class LivroDAO {
      */
     public void cadastrar(Livro livro) throws SQLException {
 
-        // 1: Inserir o Livro principal.
+        //1: Insere o Livro principal.
         String sqlLivro = "INSERT INTO Livro (Titulo, ISBN, Sinopse, ano_publicacao, capa, data_Cadastro, paginas, livro, ID_Editora) " +
                           "VALUES (?, ?, ?, ?, ?, GETDATE(), ?, ?, ?)";
 
-        // 2: Inserir na tabela-link de autores
+        //2: Insere na tabela-link de autores
         String sqlAutor = "INSERT INTO Livro_Autor (ID_livro, ID_Autor) VALUES (?, ?)";
 
-        // 3: Inserir na tabela-link de gêneros
+        //3: Insere na tabela-link de gêneros
         String sqlGenero = "INSERT INTO Livro_Genero (ID_livro, ID_Genero) VALUES (?, ?)";
 
-        // O try-with-resources garante que a conexão será fechada
+        //O try-with-resources garante que a conexão será fechada
         try (Connection conn = ConnectionFactory.getConnection()) {
 
             // INÍCIO DA TRANSAÇÃO
-            // O auto-commit não está ligado. Então nada será salvo até mandar (conn.commit()).
+            //O auto-commit não está ligado. Então nada será salvo até mandar (conn.commit()).
             conn.setAutoCommit(false);
 
             int idNovoLivro = -1;
 
-            // Parte 1: Salvar o livro principal
+            //Parte 1: Salva o Livro principal
             try (PreparedStatement pstmtLivro = conn.prepareStatement(sqlLivro, Statement.RETURN_GENERATED_KEYS)) {
 
                 pstmtLivro.setString(1, livro.getTitulo());
@@ -56,19 +56,19 @@ public class LivroDAO {
 
                 pstmtLivro.executeUpdate();
 
-                // Pegar o ID gerado (SCOPE_IDENTITY())
+                //Pega o ID gerado (SCOPE_IDENTITY())
                 try (ResultSet rs = pstmtLivro.getGeneratedKeys()) {
                     if (rs.next()) {
                         idNovoLivro = rs.getInt(1);
                     }
                 }
             }
-            // Não conseguiu o ID solta essa execeção
+            //Não conseguiu o ID solta essa execeção
             if (idNovoLivro == -1) {
                 throw new SQLException("Falha ao cadastrar livro, não foi possível obter o ID.");
             }
 
-            // Parte 2: Salvar os Autores (em Lote)
+            //Parte 2: Salva os Autores (em Lote)
             try (PreparedStatement pstmtAutor = conn.prepareStatement(sqlAutor)) {
                 for (Autor autor : livro.getAutores()) {
                     pstmtAutor.setInt(1, idNovoLivro);
@@ -78,7 +78,7 @@ public class LivroDAO {
                 pstmtAutor.executeBatch(); // Executa todas as operações de uma vez
             }
 
-            // Parte 3: Salvar os Gêneros (em Lote)
+            //Parte 3: Salva os Gêneros (em Lote)
             try (PreparedStatement pstmtGenero = conn.prepareStatement(sqlGenero)) {
                 for (Genero genero : livro.getGeneros()) {
                     pstmtGenero.setInt(1, idNovoLivro);
@@ -88,8 +88,8 @@ public class LivroDAO {
                 pstmtGenero.executeBatch();
             }
 
-            // FIM DA TRANSAÇÃO
-            // Se deu certo salvará no banco
+            //FIM DA TRANSAÇÃO
+            //Se deu certo salvará no banco
             conn.commit();
 
         } catch (SQLException e) {
@@ -101,10 +101,10 @@ public class LivroDAO {
             // Apenas relançamos a exceção para a camada de serviço saber que falhou.
             throw new SQLException("Erro ao cadastrar livro (transação falhou): " + e.getMessage(), e);
         }
-        // A conexão é fechada automaticamente aqui pelo try-with-resources.
+        //A conexão é fechada automaticamente aqui pelo try-with-resources.
     }
 
-    // MÉTODO DE BUSCA
+    //MÉTODO DE BUSCA
     /**
      * Busca livros no banco de dados com base em um termo.
      * A busca é feita no título, nome dos autores e nome dos gêneros.
@@ -137,15 +137,15 @@ public class LivroDAO {
             pstmt.setString(3, termoBusca);
 
             try (ResultSet rs = pstmt.executeQuery()) {
-                // Para cada linha que o banco retorna...
+                //Para cada linha que o banco retorna...
                 while (rs.next()) {
                     // ...irá mapear o resultado para um objeto Livro
-                    // e o adicionar à lista
+                    //e o adicionar à lista
                     livros.add(mapearLivroComEditora(rs));
                 }
             }
         } catch (SQLException e) {
-            // Em caso de erro, relança a exceção
+            //Em caso de erro, relança a exceção
             throw new SQLException("Erro ao buscar livros por termo: " + e.getMessage(), e);
         }
 
@@ -180,7 +180,7 @@ public class LivroDAO {
         return livro;
     }
 
-    // MÉTODO PARA CARREGAR TUDO DO LIVRO NA PÁGINA
+    //MÉTODO PARA CARREGAR TUDO DO LIVRO NA PÁGINA
     /**
      * Busca um único livro pelo seu ID, carregando
      * todas as suas informações, incluindo a editora,
@@ -192,7 +192,7 @@ public class LivroDAO {
     public Livro buscarPorId(int idLivro) throws SQLException {
         Livro livro = null;
 
-        // 1: Busca o livro principal e a editora
+        //1: Busca o livro principal e a editora
         String sqlLivro = "SELECT " +
                 "    L.ID_livro, L.Titulo, L.ISBN, L.Sinopse, L.ano_publicacao, " +
                 "    L.data_Cadastro, L.paginas, L.capa, L.livro, " +
@@ -201,13 +201,13 @@ public class LivroDAO {
                 "JOIN Editora AS E ON L.ID_Editora = E.ID_Editora " +
                 "WHERE L.ID_livro = ?";
 
-        // 2: Busca os autores
+        //2: Busca os autores
         String sqlAutores = "SELECT A.ID_Autor, A.nome_autor " +
                 "FROM Autor A " +
                 "JOIN Livro_Autor LA ON A.ID_Autor = LA.ID_Autor " +
                 "WHERE LA.ID_livro = ?";
 
-        // 3: Busca os gêneros
+        //3: Busca os gêneros
         String sqlGeneros = "SELECT G.ID_Genero, G.nome_genero " +
                 "FROM Genero G " +
                 "JOIN Livro_Genero LG ON G.ID_Genero = LG.ID_Genero " +
@@ -215,7 +215,7 @@ public class LivroDAO {
 
         try (Connection conn = ConnectionFactory.getConnection()) {
 
-            // Parte 1: Buscar o Livro principal
+            //Parte 1: Busca o Livro principal
             try (PreparedStatement pstmt = conn.prepareStatement(sqlLivro)) {
                 pstmt.setInt(1, idLivro);
 
@@ -226,12 +226,12 @@ public class LivroDAO {
                 }
             }
 
-            // Se não encontrou o livro (livro == null), não há o que fazer.
+            //Se não encontrou o livro (livro == null)
             if (livro == null) {
-                return null; // Retorna nulo (livro não encontrado)
+                return null; //Retorna nulo (livro não encontrado)
             }
 
-            // Parte 2: Buscar e adicionar os Autores
+            //Parte 2: Busca e adiciona os Autores
             try (PreparedStatement pstmtAutores = conn.prepareStatement(sqlAutores)) {
                 pstmtAutores.setInt(1, idLivro);
                 try (ResultSet rsAutores = pstmtAutores.executeQuery()) {
@@ -245,7 +245,7 @@ public class LivroDAO {
                 }
             }
 
-            // Parte 3: Buscar e adicionar os Gêneros
+            //Parte 3: Buscar e adicionar os Gêneros
             try (PreparedStatement pstmtGeneros = conn.prepareStatement(sqlGeneros)) {
                 pstmtGeneros.setInt(1, idLivro);
                 try (ResultSet rsGeneros = pstmtGeneros.executeQuery()) {
@@ -253,7 +253,6 @@ public class LivroDAO {
                         Genero genero = new Genero();
                         genero.setIdGenero(rsGeneros.getInt("ID_Genero"));
                         genero.setNome(rsGeneros.getString("nome_genero"));
-                        // Adicionamos o gênero à lista dentro do objeto livro
                         livro.adicionarGenero(genero);
                     }
                 }
@@ -263,12 +262,177 @@ public class LivroDAO {
             throw new SQLException("Erro ao buscar livro por ID: " + e.getMessage(), e);
         }
 
-        // Retorna o objeto Livro completo
+        //Retorna o objeto Livro completo
         return livro;
     }
 
+    //MÉTODO EDITAR LIVRO
 
-    // ... (Aqui virão os outros métodos: editar, remover) ...
+    /**
+     * Edita um livro existente no banco de dados.
+     * Isso inclui atualizar a tabela Livro principal e recadastrar
+     * seus autores e gêneros em uma transação.
+     * @param livro O objeto Livro com o ID e os dados atualizados.
+     * @throws SQLException
+     */
+    public void editar(Livro livro) throws SQLException {
 
-}
+        //Atualiza o Livro principal
+        String sqlUpdateLivro = "UPDATE Livro SET " +
+                " Titulo = ?, ISBN = ?, Sinopse = ?, ano_publicacao = ?, " +
+                " capa = ?, paginas = ?, livro = ?, ID_Editora = ? " +
+                "WHERE ID_livro = ?";
+
+        //Remove autores antigos
+        String sqlDeleteAutores = "DELETE FROM Livro_Autor WHERE ID_livro = ?";
+        //Remove gêneros antigos
+        String sqlDeleteGeneros = "DELETE FROM Livro_Genero WHERE ID_livro = ?";
+        //Insere novos autores
+        String sqlInsertAutor = "INSERT INTO Livro_Autor (ID_livro, ID_Autor) VALUES (?, ?)";
+        //Insere novos gêneros
+        String sqlInsertGenero = "INSERT INTO Livro_Genero (ID_livro, ID_Genero) VALUES (?, ?)";
+
+        try (Connection conn = ConnectionFactory.getConnection()) {
+
+            conn.setAutoCommit(false);
+
+            //Parte 1: Atualiza o Livro principal
+            try (PreparedStatement pstmt = conn.prepareStatement(sqlUpdateLivro)) {
+                pstmt.setString(1, livro.getTitulo());
+                pstmt.setString(2, livro.getIsbn());
+                pstmt.setString(3, livro.getSinopse());
+                pstmt.setInt(4, livro.getAnoPublicacao());
+                pstmt.setString(5, livro.getCapaPath());
+                pstmt.setInt(6, livro.getPaginas());
+                pstmt.setString(7, livro.getLivroPath());
+                pstmt.setInt(8, livro.getEditora().getIdEditora());
+                pstmt.setInt(9, livro.getIdLivro()); // O 'WHERE'
+
+                pstmt.executeUpdate();
+            }
+
+            //Parte 2: Recadastra Autores
+            //Deleta os antigos
+            try (PreparedStatement pstmtDelAut = conn.prepareStatement(sqlDeleteAutores)) {
+                pstmtDelAut.setInt(1, livro.getIdLivro());
+                pstmtDelAut.executeUpdate();
+            }
+            //Insere os novos (em lote)
+            try (PreparedStatement pstmtInsAut = conn.prepareStatement(sqlInsertAutor)) {
+                for (Autor autor : livro.getAutores()) {
+                    pstmtInsAut.setInt(1, livro.getIdLivro());
+                    pstmtInsAut.setInt(2, autor.getIdAutor());
+                    pstmtInsAut.addBatch();
+                }
+                pstmtInsAut.executeBatch();
+            }
+
+            //Parte 3: Recadastra Gêneros
+            //Deleta os antigos
+            try (PreparedStatement pstmtDelGen = conn.prepareStatement(sqlDeleteGeneros)) {
+                pstmtDelGen.setInt(1, livro.getIdLivro());
+                pstmtDelGen.executeUpdate();
+            }
+            //Insere os novos (em lote)
+            try (PreparedStatement pstmtInsGen = conn.prepareStatement(sqlInsertGenero)) {
+                for (Genero genero : livro.getGeneros()) {
+                    pstmtInsGen.setInt(1, livro.getIdLivro());
+                    pstmtInsGen.setInt(2, genero.getIdGenero());
+                    pstmtInsGen.addBatch();
+                }
+                pstmtInsGen.executeBatch();
+            }
+
+            // --- FIM DA TRANSAÇÃO ---
+            // Se tudo deu certo, salva as mudanças
+            conn.commit();
+
+        } catch (SQLException e) {
+            // Se qualquer passo falhou, o commit() não foi chamado.
+            // O try-with-resources automaticamente fará o rollback.
+            throw new SQLException("Erro ao editar livro (transação falhou): " + e.getMessage(), e);
+        }
+    }
+
+
+    //MÉTODO REMOVER LIVRO
+
+    /**
+     * Remove um livro do banco de dados.
+     * Remove primeiro os registros das tabelas fracas (Autor, Genero, Aluguel)
+     * e depois remove o livro principal. Tudo em uma transação.
+     * @param idLivro O ID do livro a ser removido.
+     * @throws SQLException
+     */
+    public void remover(int idLivro) throws SQLException {
+
+        // Essa é a ordem da remoção, respeitando as Foreign Key
+        String sqlDeleteAutores = "DELETE FROM Livro_Autor WHERE ID_livro = ?";
+        String sqlDeleteGeneros = "DELETE FROM Livro_Genero WHERE ID_livro = ?";
+        String sqlDeleteAlugueis = "DELETE FROM Aluguel WHERE ID_livro = ?";
+        String sqlDeleteLivro   = "DELETE FROM Livro WHERE ID_livro = ?";
+
+        Connection conn = null; //Declarado fora para poder fazer rollback no catch
+        try {
+            conn = ConnectionFactory.getConnection();
+
+            //INÍCIO DA TRANSAÇÃO
+            conn.setAutoCommit(false);
+
+            //Parte 1: Remove associações de Autores
+            try (PreparedStatement pstmt = conn.prepareStatement(sqlDeleteAutores)) {
+                pstmt.setInt(1, idLivro);
+                pstmt.executeUpdate();
+            }
+
+            //Parte 2: Remove associações de Gêneros
+            try (PreparedStatement pstmt = conn.prepareStatement(sqlDeleteGeneros)) {
+                pstmt.setInt(1, idLivro);
+                pstmt.executeUpdate();
+            }
+
+            //Parte 3: Remove histórico de Aluguéis
+            try (PreparedStatement pstmt = conn.prepareStatement(sqlDeleteAlugueis)) {
+                pstmt.setInt(1, idLivro);
+                pstmt.executeUpdate();
+            }
+
+            //Parte 4: Remove o Livro principal
+            try (PreparedStatement pstmt = conn.prepareStatement(sqlDeleteLivro)) {
+                pstmt.setInt(1, idLivro);
+                int linhasAfetadas = pstmt.executeUpdate();
+
+                if (linhasAfetadas == 0) {
+                    throw new SQLException("Erro ao remover: Livro com ID " + idLivro + " não encontrado.");
+                }
+            }
+
+            //FIM DA TRANSAÇÃO
+            //Se tudo deu certo, salva as mudanças
+            conn.commit();
+
+            // Se qualquer passo falhou...
+        } catch (SQLException e) {
+            try {
+                if (conn != null) {
+                    System.err.println("Transação de remoção falhou. Executando rollback...");
+                    conn.rollback(); //Desfaz todas as mudanças
+                }
+            } catch (SQLException exRollback) {
+                System.err.println("Erro crítico ao tentar executar rollback: " + exRollback.getMessage());
+            }
+            throw new SQLException("Erro ao remover livro (transação revertida): " + e.getMessage(), e);
+
+        } finally {
+            //Garante que a conexão seja fechada e volte ao modo autoCommit
+            if (conn != null) {
+                try {
+                    conn.setAutoCommit(true);
+                    conn.close();
+                } catch (SQLException e) {
+                    System.err.println("Erro ao fechar conexão pós-transação: " + e.getMessage());
+                }
+            }
+        }
+    }
 }

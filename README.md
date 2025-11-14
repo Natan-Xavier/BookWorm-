@@ -13,24 +13,22 @@ O objetivo deste projeto é aplicar e aprofundar os conhecimentos em Programaç�
 O sistema foi desenhado com três níveis de acesso, cada um com suas respectivas permissões:
 
 ### 👤 Cliente
-- [ ] Sistema de autenticação (Login e Cadastro).
-- [ ] Pesquisar livros no acervo (por título, autor, gênero, etc.).
-- [ ] Alugar livros disponíveis.
-- [ ] Comprar livros.
-- [ ] Avaliar os livros (com nota e/ou comentário).
+- [X] Sistema de autenticação (Login e Cadastro).
+- [X] Pesquisar livros no acervo (por título, autor, gênero, etc.).
+- [X] Alugar livros disponíveis.
 - [ ] Visualizar histórico de compras e aluguéis.
 
 ### 👨‍💼 Funcionário
-- [ ] Possui todas as permissões do **Cliente**.
-- [ ] Adicionar novos livros ao acervo do site.
-- [ ] Editar informações de livros existentes.
-- [ ] Remover livros do acervo.
-- [ ] Gerenciar o estoque de livros.
+- [X] Possui todas as permissões do **Cliente**.
+- [X] Adicionar novos livros ao acervo do site.
+- [X] Editar informações de livros existentes.
+- [X] Remover livros do acervo.
+- [X] Gerenciar o estoque de livros.
 
 ### 👑 Administrador
-- [ ] Possui todas as permissões de **Funcionário** e **Cliente**.
-- [ ] Gerenciamento completo de usuários (remover Funcionários e Clientes).
-- [ ] Acesso e controle direto sobre o banco de dados.
+- [X] Possui todas as permissões de **Funcionário** e **Cliente**.
+- [X] Gerenciamento completo de usuários (remover Funcionários e Clientes).
+- [X] Acesso e controle direto sobre o banco de dados.
 - [ ] Visualizar logs e relatórios do sistema.
 
 ---
@@ -38,7 +36,7 @@ O sistema foi desenhado com três níveis de acesso, cada um com suas respectiva
 ## 🛠️ Tecnologias e Ferramentas
 
 | Ferramenta | Descrição |
-| Eclipse | IDLE usada
+| IntelliJ IDEA Community Edition 2024.3.4.1 | IDLE usada
 | Java    | Linguagem principal para o desenvolvimento do backend. |
 | JDK21   | Sistema de controle de versão. |
 

@@ -20,17 +20,17 @@ public class Cliente extends Usuario {
         return true;
     }
 
-    public void alugarLivro(Livro livro) {
+    public void alugarLivro(biblioteca.Classes.Livro livro) {
         if (!status_Conta) {
             System.out.println("Conta bloqueada! Não é possível alugar.");
             return;
         }
-        AluguelDAO dao = new AluguelDAO();
+        biblioteca.DAO.AluguelDAO dao = new biblioteca.DAO.AluguelDAO();
         dao.registrarAluguel(this, livro);
     }
 
     public void devolverLivro(Livro livro) {
-        AluguelDAO dao = new AluguelDAO();
+        biblioteca.DAO.AluguelDAO dao = new AluguelDAO();
         dao.registrarDevolucao(this, livro);
     }
 
